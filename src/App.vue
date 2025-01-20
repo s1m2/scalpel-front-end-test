@@ -5,6 +5,7 @@ import { storeToRefs } from 'pinia';
 import { proto } from "./mocks/proto_demo.mjs";
 
 import Poses from './components/pose_test.vue';
+import DisplayInfo from './components/DisplayInfo.vue';
 
 const store = useProtoStore();
 const { protoFiles } = storeToRefs(store);
@@ -43,12 +44,12 @@ onMounted(() => {
       </ol>
       <b class="task">D. Execution</b>
       <ol>
-        <li>build and serve with the provided scripts in package.json</li>
-        <li>using the express server `./server.js`, create a POST end-point which takes a string and call it from the vue app with any given arg</li>
+        <li><s>build and serve with the provided scripts in package.json</s></li>
+        <li><s>using the express server `./server.js`, create a POST end-point which takes a string and call it from the vue app with any given arg</s></li>
         <li>Linux | Mac: use node `exec` (specifically) to create a new file called 'word' containing the passed arg and the timestamp (Unix format)</li>
-        <li>Windows: use an fs tool to create a new file called 'word' with the passed arg</li>
-        <li>create a GET endpoint on the server to read the file and return the contents to the vue app</li>
-        <li>display the file contents in the app</li>
+        <li><s>Windows: use an fs tool to create a new file called 'word' with the passed arg</s></li>
+        <li><s>create a GET endpoint on the server to read the file and return the contents to the vue app</s></li>
+        <li><s>display the file contents in the app</s></li>
         <li>as in section 'C', commit and pr</li>
       </ol>
 
@@ -62,6 +63,7 @@ onMounted(() => {
   </div>
 
   <Poses />
+  <DisplayInfo />
 
 </template>
 
