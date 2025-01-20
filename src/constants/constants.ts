@@ -1,0 +1,1 @@
+export const FACES = ['face_up', 'face_down', 'right', 'left', 'vertical_up', 'vertical_down']

@@ -1,0 +1,207 @@
+@use "sass:math"
+
+:root 
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif
+  line-height: 1.5
+  font-weight: 400
+
+  color: rgba(255, 255, 255, 0.87)
+  background-color: #242424
+
+  font-synthesis: none
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  -webkit-text-size-adjust: 100%
+
+a 
+  font-weight: 500
+  color: #646cff
+  text-decoration: inherit
+a:hover 
+  color: #535bf2
+
+body 
+  margin: 0
+  display: flex
+  place-items: center
+  min-width: 100vw
+  min-height: 100vh
+  color: white
+  background-color: #242424
+
+h1 
+  font-size: 3.2em
+  line-height: 1.1
+
+button 
+  border-radius: 8px
+  border: 1px solid transparent
+  padding: 0.6em 1.2em
+  font-size: 1em
+  font-weight: 500
+  font-family: inherit
+  background-color: #1a1a1a
+  color: white
+  cursor: pointer
+  transition: border-color 0.25s
+button:hover 
+  border-color: #646cff
+button:focus,
+button:focus-visible 
+  outline: 4px auto -webkit-focus-ring-color
+
+.card 
+  padding: 2em
+
+$cs: 100px
+$coy: -25deg
+$cox: 30deg
+$cs2: 50px
+$coy2: -15deg
+$cox2: 20deg
+
+.mat
+  position: absolute
+  border: 2px solid #646cff
+  width: 2 * $cs
+  height: 2 * $cs
+  background-color: #105544
+  transform: translateZ(-(math.div($cs, 2))) translateX(-(math.div($cs,2.5))) translateY(-(math.div($cs, 2.5))) rotateY($coy) rotateX($cox)
+
+.scene, .scene2 
+  border: none
+  margin: 10px
+.scene 
+  // border: 1px solid #575758
+  border: none
+  width: $cs
+  height: 0.75 * $cs
+  perspective: calc(2.5 * $cs )
+.scene2 
+  width: $cs2
+  height: $cs2
+  perspective: calc( 2 * $cs2 )
+
+.cube, .cube2 
+  position: relative
+  transform-style: preserve-3d
+  transition: transform 1s
+.cube 
+  width: $cs
+  height: $cs
+  transform: translateZ(-(math.div($cs, 2))) rotateY($coy) rotateX($cox)
+.cube2 
+  width: $cs2
+  height: $cs2
+  transform: translateZ(-(math.div($cs2, 2))) rotateY($coy2) rotateX($cox2)
+
+.cube__face, .cube2__face 
+  position: absolute
+  border: none
+  font-weight: bold
+  color: #000
+  display: flex
+  text-align: center
+  align-items: center
+  justify-content: center
+.cube__face
+  font-size: 20px
+  width: $cs
+  height: $cs
+.cube2__face
+  font-size: 10px
+  width: $cs2
+  height: $cs2
+
+.cube__face--face_up, .cube2__face--face_up   
+  background: hsla(  0, 100%, 50%, 0.7)
+.cube__face--right, .cube2__face--right   
+  background: hsla( 60, 100%, 50%, 0.7)
+.cube__face--face_down, .cube2__face--face_down    
+  background: hsla(120, 100%, 50%, 0.7)
+.cube__face--left, .cube2__face--left    
+  background: hsla(180, 100%, 50%, 0.7)
+.cube__face--vertical_up, .cube2__face--vertical_up     
+  background: hsla(240, 100%, 50%, 0.7)
+.cube__face--vertical_down, .cube2__face--vertical_down  
+  background: hsla(300, 100%, 50%, 0.7)
+
+
+.cube__face--face_up, .cube2__face--face_up,
+.cube__face--face_down, .cube2__face--face_down,
+.cube__face--left, .cube2__face--left,
+.cube__face--right, .cube2__face--right,
+.cube__face--vertical_up, .cube2__face--vertical_up,
+.cube__face--vertical_down, .cube2__face--vertical_down 
+  &.highlight
+    color: #fff
+    text-shadow: 2px 2px 3px #000
+
+
+.cube__face--face_up, .cube2__face--face_up
+  background: hsla(  0, 100%, 50%, 0.7)
+.cube__face--right, .cube2__face--right
+  background: hsla( 60, 100%, 50%, 0.7)
+.cube__face--face_down, .cube2__face--face_down
+  background: hsla(120, 100%, 50%, 0.7)
+.cube__face--left, .cube2__face--left
+  background: hsla(180, 100%, 50%, 0.7)
+.cube__face--vertical_up, .cube2__face--vertical_up
+  background: hsla(240, 100%, 50%, 0.7)
+.cube__face--vertical_down, .cube2__face--vertical_down
+  background: hsla(300, 100%, 50%, 0.7)
+
+
+.cube__face--face_up   
+  transform: rotateY(  0deg) translateZ(math.div($cs, 2))
+.cube__face--face_down    
+  transform: rotateY(180deg) translateZ(math.div($cs, 2))
+.cube__face--left    
+  transform: rotateY(-90deg) translateZ(math.div($cs, 2))
+.cube__face--right   
+  transform: rotateY( 90deg) translateZ(math.div($cs, 2))
+.cube__face--vertical_up     
+  transform: rotateX( 90deg) translateZ(math.div($cs, 2))
+.cube__face--vertical_down  
+  transform: rotateX(-90deg) translateZ(math.div($cs, 2))
+
+.cube2__face--face_up   
+  transform: rotateY(  0deg) translateZ(math.div($cs2, 2))
+.cube2__face--face_down    
+  transform: rotateY(180deg) translateZ(math.div($cs2, 2))
+.cube2__face--left    
+  transform: rotateY(-90deg) translateZ(math.div($cs2, 2))
+.cube2__face--right   
+  transform: rotateY( 90deg) translateZ(math.div($cs2, 2))
+.cube2__face--vertical_up     
+  transform: rotateX( 90deg) translateZ(math.div($cs2, 2))
+.cube2__face--vertical_down  
+  transform: rotateX(-90deg) translateZ(math.div($cs2, 2))
+
+
+.cube.show-face_up   
+  transform: translateZ(-(math.div($cs, 2))) rotateY(   0deg + $coy) rotateX(-$coy)
+.cube.show-face_down    
+  transform: translateZ(-(math.div($cs, 2))) rotateY(-180deg + $coy) rotateX($coy)
+.cube.show-left    
+  transform: translateZ(-(math.div($cs, 2))) rotateY(  90deg + $coy) rotateZ(-$coy)
+.cube.show-right   
+  transform: translateZ(-(math.div($cs, 2))) rotateY( -90deg + $coy) rotateZ($coy)
+.cube.show-vertical_up     
+  transform: translateZ(-(math.div($cs, 2))) rotateX( -90deg + $cox) rotateZ(-$cox) rotateY(-10deg)
+.cube.show-vertical_down  
+  transform: translateZ(-(math.div($cs, 2))) rotateX(  90deg + $cox) rotateZ(-$coy) rotateY(10deg)
+
+.cube2.show-face_up   
+  transform: translateZ(-(math.div($cs2, 2))) rotateY(   0deg + $coy2) rotateX(-$coy2)
+.cube2.show-face_down    
+  transform: translateZ(-(math.div($cs2, 2))) rotateY(-180deg + $coy2) rotateX($coy2)
+.cube2.show-left    
+  transform: translateZ(-(math.div($cs2, 2))) rotateY(  90deg + $coy2) rotateZ(-$coy2)
+.cube2.show-right   
+  transform: translateZ(-(math.div($cs2, 2))) rotateY( -90deg + $coy2) rotateZ($coy2)
+.cube2.show-vertical_up     
+  transform: translateZ(-(math.div($cs2, 2))) rotateX( -90deg + $cox2) rotateZ(-$cox2) rotateY(-10deg)
+.cube2.show-vertical_down  
+  transform: translateZ(-(math.div($cs2, 2))) rotateX(  90deg + $cox2) rotateZ(-$coy2) rotateY(10deg)
